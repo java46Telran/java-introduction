@@ -13,7 +13,7 @@ public class SportLotoAppl {
 		int numbers[] = new int[N_NUMBERS];
 		for (int i = 0; i < N_NUMBERS; i++) {
 			int number = getUniqueNumber(numbers, MIN_NUMBER, MAX_NUMBER);
-			System.out.println(number);
+			System.out.print(number + " ");
 			numbers[i] = number;
 		}
 		
