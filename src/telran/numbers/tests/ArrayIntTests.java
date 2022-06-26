@@ -68,7 +68,7 @@ class ArrayIntTests {
 	}
 	@Test
 	void binarySearchTest() {
-		int ar[] = {1, 5, 100, 200, 350, 500};
+		int ar[] = {1, 5, 100, 200, 350, 500,550};
 		assertEquals(0, ArrayInt.binaryIndexOf(ar, 1));
 		assertEquals(2, ArrayInt.binaryIndexOf(ar, 100));
 		assertEquals(5, ArrayInt.binaryIndexOf(ar, 500));
@@ -76,7 +76,7 @@ class ArrayIntTests {
 		//Tests for HW #4
 		assertEquals(-1, ArrayInt.binaryIndexOf(ar, -10));
 		assertEquals(-4, ArrayInt.binaryIndexOf(ar, 150));
-		assertEquals(-7, ArrayInt.binaryIndexOf(ar, 600));
+		assertEquals(-8, ArrayInt.binaryIndexOf(ar, 600));
 		int ar1[] = {1,1,1,1,1};
 		assertEquals(0, ArrayInt.binaryIndexOf(ar1, 1));
 		
