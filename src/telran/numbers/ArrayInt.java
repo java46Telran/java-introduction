@@ -60,12 +60,13 @@ public class ArrayInt {
 		return res;
 	}
 	public static void sort(int[] ar) {
+		//for worst case the number of iterations = N(N-1)/2
 		boolean flSorted = true;
 		int length = ar.length;
 		do {
 			flSorted = moveMaxToEnd(ar, length);
 			length--;
-		}while(!flSorted);
+		}while(!flSorted); 
 		
 		
 	}
