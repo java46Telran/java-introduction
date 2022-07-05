@@ -1,6 +1,7 @@
 package telran.text;
 
 public class Strings {
+private static final int MAX_NUMBER = 999;
 /**
  * 
  * @param str1 ascii string with no repeated symbols
@@ -139,7 +140,37 @@ private static void fillHelperString1(String str1, int[] helper) {
 //      - A name part in  the name1 may be missing from the name2
 //      - Name parts in one name must not contradict name parts in the other
 //      - Name parts that match must be in the same order in both names
-		return "no match";
+		String res = "no match";
+		String partsName1[] = name1.split(" ");
+		String partsName2[] = name2.split(" ");
+		int indPartsName2 = 0;
+		boolean flMatch = false;
+		for (int i = 0; i < partsName1.length; i++) {
+			flMatch = partMatch(partsName1[i], partsName2[indPartsName2]);
+			if (flMatch) {
+				indPartsName2++;
+				if (indPartsName2 == partsName2.length) {
+					res = "match";
+				}
+			}
+		}
+		return res;
+	}
+	private static boolean partMatch(String part1, String part2) {
+		part1 = part1.toLowerCase();
+		part2 = part2.toLowerCase();
+		boolean res = false;
+		if (part1.compareTo(part2) == 0) {
+			res = true;
+		} else if(isSameInitial(part1, part2)) {
+			res = true;
+		} 
+		return res;
+	}
+	private static boolean isSameInitial(String part1, String part2) {
+		String partI = part1.length() == 1 ? part1 : part2;
+		String partF = part1 == partI ? part2 : part1;
+		return partI.length() == 1 && partF.startsWith(partI);
 	}
 	/**
 	 * sorts array of strings
@@ -149,10 +180,28 @@ private static void fillHelperString1(String str1, int[] helper) {
 	 * number 23
 	 */
 	static public void sortStringsAsNumbers(String[] strNumbers) {
-		//TODO
+		
 		//Algorithm complexity should be O[N]
 		//Implementation hint: additional helper array such that ar[10] - count of occurrences
 		//of number 10 in the given array
 		//find out how to get number from a string and how to convert number to string
+		int helper[] = new int[MAX_NUMBER + 1];
+		fillHelper(strNumbers, helper);
+		sorting(strNumbers, helper);
+	}
+	private static void sorting(String[] strNumbers, int[] helper) {
+		int indAr = 0;
+		for (int i = 0; i < helper.length; i++) {
+			for(int j = 0; j < helper[i]; j++) {
+				strNumbers[indAr++] = Integer.toString(i);
+			}
+		}
+		
+	}
+	private static void fillHelper(String[] strNumbers, int[] helper) {
+		for (int i = 0; i < strNumbers.length; i++) {
+			int index = Integer.valueOf(strNumbers[i]);
+			helper[index]++;
+		}
 	}
 }
