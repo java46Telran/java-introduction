@@ -72,9 +72,11 @@ class StringsClassTests {
 		String noMatch = "no match";
 		assertEquals(match, Strings.matches("David", "david"));
 		assertEquals(match, Strings.matches("John F", "John Fitzgerald"));
+		assertEquals(match, Strings.matches("John Fit", "John F"));
 		assertEquals(noMatch, Strings.matches("John K", "John Fitzgerald"));
 		assertEquals(match, Strings.matches("Anna Maria Magdalena", "Anna Magdalena"));
 		assertEquals(match, Strings.matches("Anna Maria Magdalena", "Maria Magdalena"));
+		assertEquals(match, Strings.matches("Anna Maria Magdalena", "Anna Maria"));
 		assertEquals(noMatch, Strings.matches("Anna Maria Magdalena", "Anna Maria Roberta"));
 		assertEquals(noMatch, Strings.matches("Anna Maria Magdalena", "Anna Magdalena Roberta"));
 		assertEquals(noMatch, Strings.matches("Anna Maria Magdalena", "Anna Magdalena Maria"));
